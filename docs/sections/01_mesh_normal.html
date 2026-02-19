@@ -21,20 +21,20 @@
   <section>
     <h2>頂点・辺・面は何を表すか</h2>
     <p>頂点は位置、辺は接続、面は表示される最小単位です。Blenderの編集はこの3要素の再配置で成立します。ExtrudeやLoop Cutも、本質的には面の追加と流れの制御です。</p>
-    <img class="figure" src="../assets/point-line-face.svg" alt="頂点辺面" />
+    <img class="figure" src="/CG_Document/assets/point-line-face.svg" alt="頂点辺面" onerror="this.onerror=null;this.src='../assets/point-line-face.svg';" />
   </section>
 
   <section>
     <h2>面の向きが法線になる</h2>
     <p>面には向きがあり、その向きをベクトルで表したものが法線（Normal）です。三角形なら2本の辺の外積で方向が決まります。つまり、面の向きが陰影計算の入口です。</p>
     <div class="theory"><strong>理論メモ:</strong> 面法線は光との角度計算に使われます。向きが逆なら明るさ計算も逆転し、見え方が破綻します。</div>
-    <img class="figure" src="../assets/diagrams/face-normal.svg" alt="面と法線" />
+    <img class="figure" src="/CG_Document/assets/diagrams/face-normal.svg" alt="面と法線" onerror="this.onerror=null;this.src='../assets/diagrams/face-normal.svg';" />
   </section>
 
   <section>
     <h2>Lambert拡散反射（最小モデル）</h2>
     <p>拡散反射の最小モデルは <code>I = max(0, N・L)</code> です。Nは法線、Lはライト方向です。NとLが揃うほど明るく、直交に近いほど暗くなります。</p>
-    <img class="figure" src="../assets/diagrams/lambert-dotnl.svg" alt="Lambert" />
+    <img class="figure" src="/CG_Document/assets/diagrams/lambert-dotnl.svg" alt="Lambert" onerror="this.onerror=null;this.src='../assets/diagrams/lambert-dotnl.svg';" />
   </section>
 </main>
 </body>
