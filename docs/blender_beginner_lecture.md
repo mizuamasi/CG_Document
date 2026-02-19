@@ -9,6 +9,24 @@
 
 ---
 
+## 0. 体感デモ（GitHub Pages / HTML）
+
+読み物は本資料、触って確認する部分はデモページで行います。  
+各デモは「何を変えたか」「どこが変わったか」の2点だけ見れば十分です。
+
+- デモページ本体: [CG Concept Playground](./interactive/index.html)
+- Smooth Shade: [開く](./interactive/index.html#smooth)
+- Normal Map: [開く](./interactive/index.html#normal)
+- Roughness: [開く](./interactive/index.html#roughness)
+- Light Types: [開く](./interactive/index.html#light)
+
+![Smooth Shade demo preview](./assets/previews/smooth.png)
+![Normal Map demo preview](./assets/previews/normal.png)
+![Roughness demo preview](./assets/previews/roughness.png)
+![Light Types demo preview](./assets/previews/light.png)
+
+---
+
 ## 1. 形の最小単位：頂点・辺・面
 
 ![点・線・面](./assets/point-line-face.svg)
@@ -194,4 +212,3 @@ PBRは魔法ではありません。
 - PBRはRoughnessとMetallicの意味を押さえるだけでも効果が大きい
 
 この5点を軸にすると、Blender実習の「なぜ」が一気につながります。
-

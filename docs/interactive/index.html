@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>CG Concept Playground</title>
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <div class="app">
+    <aside class="sidebar">
+      <h1>CG Concept Playground</h1>
+      <p class="subtitle">Blender実習を補助する体感デモ</p>
+      <nav class="demo-list" aria-label="Demo selector">
+        <button class="demo-btn active" data-demo="smooth">1. Smooth Shade</button>
+        <button class="demo-btn" data-demo="normal">2. Normal Map</button>
+        <button class="demo-btn" data-demo="roughness">3. Roughness</button>
+        <button class="demo-btn" data-demo="light">4. Light Types</button>
+      </nav>
+      <section class="hint">
+        <h2>使い方</h2>
+        <p>左で項目を選び、右のスライダーを動かしてください。毎回「何を変えたか」「どこが変わったか」の2点だけ確認します。</p>
+      </section>
+    </aside>
+
+    <main class="workspace">
+      <header class="topbar">
+        <div class="dot red"></div>
+        <div class="dot yellow"></div>
+        <div class="dot green"></div>
+        <span class="topbar-title">Viewport</span>
+      </header>
+
+      <section class="viewport-wrap">
+        <canvas id="viewport" width="960" height="560" aria-label="CG demo viewport"></canvas>
+      </section>
+
+      <section class="panel">
+        <h2 id="demo-title">Smooth Shade</h2>
+        <p id="demo-guide" class="guide">FlatとSmoothを切り替えて、同じ形でも陰影がどう変わるか見てください。</p>
+        <div id="controls" class="controls"></div>
+      </section>
+    </main>
+  </div>
+
+  <script src="./app.js"></script>
+</body>
+</html>

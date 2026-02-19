@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Blender CG Intro Materials</title>
+  <style>
+    :root {
+      --bg: #0f1217;
+      --card: #1a202a;
+      --text: #e8edf5;
+      --muted: #a6b0bf;
+      --accent: #68a9ff;
+      --line: #2b3444;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "Segoe UI", "Noto Sans JP", sans-serif;
+      color: var(--text);
+      background: radial-gradient(circle at 12% 0%, #202938 0%, var(--bg) 48%);
+    }
+    .wrap {
+      width: min(1120px, 92vw);
+      margin: 40px auto 52px;
+    }
+    h1 {
+      margin: 0;
+      font-size: clamp(1.5rem, 3vw, 2.1rem);
+    }
+    p.lead {
+      margin: 10px 0 24px;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 16px;
+    }
+    .card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      overflow: hidden;
+    }
+    .card img {
+      width: 100%;
+      display: block;
+      border-bottom: 1px solid var(--line);
+      aspect-ratio: 14 / 9;
+      object-fit: cover;
+    }
+    .card .body {
+      padding: 12px;
+    }
+    .card h2 {
+      margin: 0;
+      font-size: 1.02rem;
+    }
+    .card p {
+      margin: 8px 0 12px;
+      color: var(--muted);
+      font-size: 0.9rem;
+      line-height: 1.55;
+    }
+    .card a {
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .card a:hover { text-decoration: underline; }
+    .top-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+    .pill {
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 8px 12px;
+      color: var(--text);
+      text-decoration: none;
+      background: #1b2230;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <h1>Blender実習向け CG基礎教材</h1>
+    <p class="lead">読み物で概念を押さえ、デモで見え方を体感する構成です。主役はBlender実習で、このページは補助教材として使います。</p>
+
+    <div class="top-links">
+      <a class="pill" href="./blender_beginner_lecture.md">読み物（Markdown）</a>
+      <a class="pill" href="./interactive/index.html">体感デモ（全体）</a>
+    </div>
+
+    <div class="grid">
+      <article class="card">
+        <img src="./assets/previews/smooth.png" alt="Smooth Shade demo preview" />
+        <div class="body">
+          <h2>1. Smooth Shade</h2>
+          <p>FlatとSmoothの切り替えで、同じ形でも陰影の連続性が変わることを確認。</p>
+          <a href="./interactive/index.html#smooth">デモを開く</a>
+        </div>
+      </article>
+
+      <article class="card">
+        <img src="./assets/previews/normal.png" alt="Normal Map demo preview" />
+        <div class="body">
+          <h2>2. Normal Map</h2>
+          <p>シルエットは同じまま、法線情報だけで凹凸感が増えることを確認。</p>
+          <a href="./interactive/index.html#normal">デモを開く</a>
+        </div>
+      </article>
+
+      <article class="card">
+        <img src="./assets/previews/roughness.png" alt="Roughness demo preview" />
+        <div class="body">
+          <h2>3. Roughness</h2>
+          <p>Roughnessによりハイライトの鋭さが変わる様子を確認。</p>
+          <a href="./interactive/index.html#roughness">デモを開く</a>
+        </div>
+      </article>
+
+      <article class="card">
+        <img src="./assets/previews/light.png" alt="Light types demo preview" />
+        <div class="body">
+          <h2>4. Light Types</h2>
+          <p>Point/Sun/Area/3-Pointで、影の硬さと明暗設計が変わることを確認。</p>
+          <a href="./interactive/index.html#light">デモを開く</a>
+        </div>
+      </article>
+    </div>
+  </div>
+</body>
+</html>
