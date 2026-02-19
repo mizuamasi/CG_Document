@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>1. 頂点・辺・面と法線</title>
-  <link rel="stylesheet" href="../sections.css" />
+  <link rel="stylesheet" href="/CG_Document/sections.css" />
 </head>
 <body>
 <header>
@@ -12,8 +12,8 @@
     <h1>1. 頂点・辺・面と法線</h1>
     <p class="subtitle">モデリングの最小単位から、光の計算に必要な法線までつなげる。</p>
     <nav class="top-links">
-      <a href="../index.html">目次へ</a>
-      <a href="./02_smooth_shade.html">次へ</a>
+      <a href="/CG_Document/index.html">目次へ</a>
+      <a href="/CG_Document/sections/02_smooth_shade.html">次へ</a>
     </nav>
   </div>
 </header>
@@ -21,20 +21,20 @@
   <section>
     <h2>頂点・辺・面は何を表すか</h2>
     <p>頂点は位置、辺は接続、面は表示される最小単位です。Blenderの編集はこの3要素の再配置で成立します。ExtrudeやLoop Cutも、本質的には面の追加と流れの制御です。</p>
-    <img class="figure" src="../assets/point-line-face.svg" alt="頂点辺面" />
+    <img class="figure" src="/CG_Document/assets/point-line-face.svg" alt="頂点辺面" />
   </section>
 
   <section>
     <h2>面の向きが法線になる</h2>
     <p>面には向きがあり、その向きをベクトルで表したものが法線（Normal）です。三角形なら2本の辺の外積で方向が決まります。つまり、面の向きが陰影計算の入口です。</p>
     <div class="theory"><strong>理論メモ:</strong> 面法線は光との角度計算に使われます。向きが逆なら明るさ計算も逆転し、見え方が破綻します。</div>
-    <img class="figure" src="../assets/diagrams/face-normal.svg" alt="面と法線" />
+    <img class="figure" src="/CG_Document/assets/diagrams/face-normal.svg" alt="面と法線" />
   </section>
 
   <section>
     <h2>Lambert拡散反射（最小モデル）</h2>
     <p>拡散反射の最小モデルは <code>I = max(0, N・L)</code> です。Nは法線、Lはライト方向です。NとLが揃うほど明るく、直交に近いほど暗くなります。</p>
-    <img class="figure" src="../assets/diagrams/lambert-dotnl.svg" alt="Lambert" />
+    <img class="figure" src="/CG_Document/assets/diagrams/lambert-dotnl.svg" alt="Lambert" />
   </section>
 </main>
 </body>

@@ -4,8 +4,8 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>3. ノーマルマップ</title>
-  <link rel="stylesheet" href="../sections.css" />
-  <link rel="stylesheet" href="../book.css" />
+  <link rel="stylesheet" href="/CG_Document/sections.css" />
+  <link rel="stylesheet" href="/CG_Document/book.css" />
 </head>
 <body>
 <header>
@@ -13,9 +13,9 @@
     <h1>3. ノーマルマップ</h1>
     <p class="subtitle">形を増やさず、法線情報で陰影ディテールを増やす。</p>
     <nav class="top-links">
-      <a href="../index.html">目次へ</a>
-      <a href="./02_smooth_shade.html">前へ</a>
-      <a href="./04_pbr_material.html">次へ</a>
+      <a href="/CG_Document/index.html">目次へ</a>
+      <a href="/CG_Document/sections/02_smooth_shade.html">前へ</a>
+      <a href="/CG_Document/sections/04_pbr_material.html">次へ</a>
     </nav>
   </div>
 </header>
@@ -23,7 +23,7 @@
   <section>
     <h2>何が変わって、何が変わらないか</h2>
     <p>ノーマルマップはピクセル単位で法線を変えるため、陰影は増えますが輪郭は変わりません。つまり凹凸「らしさ」は増えるが、シルエットは低ポリのままです。</p>
-    <img class="figure" src="../assets/normal-map.svg" alt="ノーマルマップ概念" />
+    <img class="figure" src="/CG_Document/assets/normal-map.svg" alt="ノーマルマップ概念" />
     <div class="theory"><strong>理論メモ:</strong> 一般的なタンジェント空間ノーマルはTBN基底で変換されます。UVの歪みが強いと陰影品質が落ちます。</div>
   </section>
 
@@ -43,6 +43,6 @@
   </section>
 </main>
 <script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.161.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.161.0/examples/jsm/"}}</script>
-<script type="module" src="../book.js"></script>
+<script type="module" src="/CG_Document/book.js"></script>
 </body>
 </html>
