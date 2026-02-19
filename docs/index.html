@@ -3,137 +3,73 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Blender CG Intro Materials</title>
-  <style>
-    :root {
-      --bg: #0f1217;
-      --card: #1a202a;
-      --text: #e8edf5;
-      --muted: #a6b0bf;
-      --accent: #68a9ff;
-      --line: #2b3444;
-    }
-    * { box-sizing: border-box; }
-    body {
-      margin: 0;
-      font-family: "Segoe UI", "Noto Sans JP", sans-serif;
-      color: var(--text);
-      background: radial-gradient(circle at 12% 0%, #202938 0%, var(--bg) 48%);
-    }
-    .wrap {
-      width: min(1120px, 92vw);
-      margin: 40px auto 52px;
-    }
-    h1 {
-      margin: 0;
-      font-size: clamp(1.5rem, 3vw, 2.1rem);
-    }
-    p.lead {
-      margin: 10px 0 24px;
-      color: var(--muted);
-      line-height: 1.7;
-    }
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 16px;
-    }
-    .card {
-      background: var(--card);
-      border: 1px solid var(--line);
-      border-radius: 14px;
-      overflow: hidden;
-    }
-    .card img {
-      width: 100%;
-      display: block;
-      border-bottom: 1px solid var(--line);
-      aspect-ratio: 14 / 9;
-      object-fit: cover;
-    }
-    .card .body {
-      padding: 12px;
-    }
-    .card h2 {
-      margin: 0;
-      font-size: 1.02rem;
-    }
-    .card p {
-      margin: 8px 0 12px;
-      color: var(--muted);
-      font-size: 0.9rem;
-      line-height: 1.55;
-    }
-    .card a {
-      color: var(--accent);
-      text-decoration: none;
-      font-weight: 600;
-    }
-    .card a:hover { text-decoration: underline; }
-    .top-links {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-bottom: 20px;
-    }
-    .pill {
-      border: 1px solid var(--line);
-      border-radius: 999px;
-      padding: 8px 12px;
-      color: var(--text);
-      text-decoration: none;
-      background: #1b2230;
-      font-size: 0.9rem;
-    }
-  </style>
+  <title>Blender実習を支えるCG基礎（Interactive Book）</title>
+  <link rel="stylesheet" href="./book.css" />
 </head>
 <body>
-  <div class="wrap">
-    <h1>Blender実習向け CG基礎教材</h1>
-    <p class="lead">読み物で概念を押さえ、デモで見え方を体感する構成です。主役はBlender実習で、このページは補助教材として使います。</p>
-
-    <div class="top-links">
-      <a class="pill" href="./blender_beginner_lecture.md">読み物（Markdown）</a>
-      <a class="pill" href="./interactive/index.html">体感デモ（全体）</a>
+  <header class="hero">
+    <div class="container">
+      <p class="eyebrow">CG Intro for Blender Class</p>
+      <h1>Blender実習を支えるCG基礎リーディング</h1>
+      <p class="lead">このページは「読み物」と「体感デモ」を一体化した教材です。各章で1つだけ操作し、何が変わるかを確認します。</p>
+      <div class="hero-links">
+        <a href="./blender_beginner_lecture.md">Markdown版</a>
+        <a href="#smooth">Smooth Shadeへ</a>
+        <a href="#normal">Normal Mapへ</a>
+        <a href="#roughness">Roughnessへ</a>
+        <a href="#lighting">Lightingへ</a>
+      </div>
     </div>
+  </header>
 
-    <div class="grid">
-      <article class="card">
-        <img src="./assets/previews/smooth.png" alt="Smooth Shade demo preview" />
-        <div class="body">
-          <h2>1. Smooth Shade</h2>
-          <p>FlatとSmoothの切り替えで、同じ形でも陰影の連続性が変わることを確認。</p>
-          <a href="./interactive/index.html#smooth">デモを開く</a>
-        </div>
-      </article>
+  <main class="container article">
+    <section>
+      <h2>0. 最初に押さえること</h2>
+      <p>Blenderで触っている要素は、ほぼ <strong>形（Mesh）・表面（Material）・光（Light）</strong> の3つです。デモでは毎回「何を変えたか」「見え方のどこが変わったか」の2点だけ見てください。</p>
+    </section>
 
-      <article class="card">
-        <img src="./assets/previews/normal.png" alt="Normal Map demo preview" />
-        <div class="body">
-          <h2>2. Normal Map</h2>
-          <p>シルエットは同じまま、法線情報だけで凹凸感が増えることを確認。</p>
-          <a href="./interactive/index.html#normal">デモを開く</a>
-        </div>
-      </article>
+    <section>
+      <h2>1. 頂点・辺・面</h2>
+      <p>モデリングは点・線・面の再配置です。操作名を暗記する前に、いま増えているのが頂点か面かを意識すると理解が安定します。</p>
+      <img class="figure" src="./assets/point-line-face.svg" alt="点 線 面の説明図" />
+    </section>
 
-      <article class="card">
-        <img src="./assets/previews/roughness.png" alt="Roughness demo preview" />
-        <div class="body">
-          <h2>3. Roughness</h2>
-          <p>Roughnessによりハイライトの鋭さが変わる様子を確認。</p>
-          <a href="./interactive/index.html#roughness">デモを開く</a>
-        </div>
-      </article>
+    <section id="smooth">
+      <h2>2. Smooth Shade と法線</h2>
+      <p>Smooth Shadeは形状を増やす機能ではなく、法線を補間して陰影を滑らかに見せる機能です。FlatとSmoothを切り替えて比較します。</p>
+      <div class="playground" data-demo="smooth"></div>
+    </section>
 
-      <article class="card">
-        <img src="./assets/previews/light.png" alt="Light types demo preview" />
-        <div class="body">
-          <h2>4. Light Types</h2>
-          <p>Point/Sun/Area/3-Pointで、影の硬さと明暗設計が変わることを確認。</p>
-          <a href="./interactive/index.html#light">デモを開く</a>
-        </div>
-      </article>
-    </div>
-  </div>
+    <section id="normal">
+      <h2>3. Normal Map</h2>
+      <p>Normal Mapは法線情報をテクスチャで追加し、凹凸感を増やします。シルエットは同じまま、陰影だけ変わる点を確認します。</p>
+      <div class="playground" data-demo="normal"></div>
+    </section>
+
+    <section id="roughness">
+      <h2>4. PBR（Roughness / Metallic）</h2>
+      <p>Roughnessは反射の広がりを決める値です。低いとシャープ、高いとぼけます。Metallicは非金属/金属の反射モデル切り替えです。</p>
+      <div class="playground" data-demo="roughness"></div>
+    </section>
+
+    <section id="lighting">
+      <h2>5. ライティングと有名な配置</h2>
+      <p>Point / Sun / Areaで影の硬さと方向が変わります。3-Pointにすると、主光・補助光・縁取り光の役割分担が見えやすくなります。</p>
+      <div class="playground" data-demo="light"></div>
+    </section>
+
+    <section>
+      <h2>6. まとめ</h2>
+      <ul>
+        <li>形の土台は頂点・辺・面</li>
+        <li>Smooth Shadeは法線補間で、形状追加ではない</li>
+        <li>Normal Mapは陰影を増やす技術で、輪郭は変えない</li>
+        <li>Roughnessは反射のぼけ方、Metallicは反射モデルの切り替え</li>
+        <li>ライトは数より役割（Key / Fill / Rim）で考える</li>
+      </ul>
+    </section>
+  </main>
+
+  <script src="./book.js"></script>
 </body>
 </html>
