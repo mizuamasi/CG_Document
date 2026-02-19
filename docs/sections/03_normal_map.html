@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>3. ノーマルマップ</title>
+  <link rel="stylesheet" href="../sections.css" />
+  <link rel="stylesheet" href="../book.css" />
+</head>
+<body>
+<header>
+  <div class="container">
+    <h1>3. ノーマルマップ</h1>
+    <p class="subtitle">形を増やさず、法線情報で陰影ディテールを増やす。</p>
+    <nav class="top-links">
+      <a href="../index.html">目次へ</a>
+      <a href="./02_smooth_shade.html">前へ</a>
+      <a href="./04_pbr_material.html">次へ</a>
+    </nav>
+  </div>
+</header>
+<main class="container">
+  <section>
+    <h2>何が変わって、何が変わらないか</h2>
+    <p>ノーマルマップはピクセル単位で法線を変えるため、陰影は増えますが輪郭は変わりません。つまり凹凸「らしさ」は増えるが、シルエットは低ポリのままです。</p>
+    <img class="figure" src="../assets/normal-map.svg" alt="ノーマルマップ概念" />
+    <div class="theory"><strong>理論メモ:</strong> 一般的なタンジェント空間ノーマルはTBN基底で変換されます。UVの歪みが強いと陰影品質が落ちます。</div>
+  </section>
+
+  <section>
+    <h2>3Dデモ</h2>
+    <p>ON/OFFとStrengthで変化を確認し、情報量と不自然さの境界を掴みます。</p>
+    <div class="playground" data-demo="normal"></div>
+  </section>
+
+  <section>
+    <h2>Blender実務メモ</h2>
+    <ul>
+      <li>Normal Mapテクスチャは <code>Non-Color</code> で読む</li>
+      <li><code>Normal Map</code> ノード経由で <code>Principled BSDF > Normal</code> へ接続</li>
+      <li>凹凸が逆ならY反転（OpenGL/DirectX差）を疑う</li>
+    </ul>
+  </section>
+</main>
+<script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.161.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.161.0/examples/jsm/"}}</script>
+<script type="module" src="../book.js"></script>
+</body>
+</html>

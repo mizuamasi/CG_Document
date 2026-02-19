@@ -1,0 +1,47 @@
+:root {
+  --bg: #101318;
+  --surface: #191f28;
+  --line: #2c3749;
+  --text: #e8edf5;
+  --muted: #aab6c8;
+  --accent: #6aaeff;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  color: var(--text);
+  background: radial-gradient(circle at 8% 0%, #1f2938 0%, var(--bg) 45%);
+  font-family: "Segoe UI", "Noto Sans JP", sans-serif;
+  line-height: 1.72;
+}
+.container { width: min(1020px, 92vw); margin: 0 auto; }
+header { padding: 28px 0 16px; border-bottom: 1px solid var(--line); }
+h1 { margin: 0; font-size: clamp(1.35rem, 2.8vw, 2rem); }
+.subtitle { margin-top: 8px; color: var(--muted); }
+nav.top-links { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 12px; }
+nav.top-links a {
+  color: var(--text); text-decoration: none; border: 1px solid var(--line);
+  background: var(--surface); border-radius: 999px; padding: 6px 12px; font-size: 0.9rem;
+}
+main { padding: 20px 0 42px; }
+section { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 14px; margin-bottom: 16px; }
+h2 { margin: 0 0 8px; font-size: 1.12rem; }
+h3 { margin: 12px 0 6px; font-size: 1rem; }
+p { margin: 0; color: #d9e0ec; }
+p + p { margin-top: 8px; }
+ul { margin: 10px 0 0; padding-left: 20px; }
+img.figure { width: 100%; margin-top: 10px; border: 1px solid var(--line); border-radius: 10px; background: #fff; }
+.theory {
+  margin-top: 10px; padding: 10px; border: 1px solid #3f4c63; border-left: 4px solid #6aaeff;
+  border-radius: 8px; background: #1d2430; color: #d6dfed; font-size: 0.92rem;
+}
+.demo-note { color: var(--muted); font-size: 0.92rem; margin-top: 8px; }
+a { color: #8dc0ff; }
+.cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 12px; }
+.card { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; overflow: hidden; }
+.card img { width: 100%; display: block; border-bottom: 1px solid var(--line); }
+.card .body { padding: 10px; }
+.card h3 { margin: 0 0 4px; }
+.card p { color: var(--muted); font-size: 0.9rem; }
+.card a { display: inline-block; margin-top: 8px; }
+@media (max-width: 760px) { section { padding: 12px; } }

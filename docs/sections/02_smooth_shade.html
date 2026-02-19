@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>2. Smooth Shade と法線補間</title>
+  <link rel="stylesheet" href="../sections.css" />
+  <link rel="stylesheet" href="../book.css" />
+</head>
+<body>
+<header>
+  <div class="container">
+    <h1>2. Smooth Shade と法線補間</h1>
+    <p class="subtitle">形状はそのまま、法線だけ変えて見え方を変える。</p>
+    <nav class="top-links">
+      <a href="../index.html">目次へ</a>
+      <a href="./01_mesh_normal.html">前へ</a>
+      <a href="./03_normal_map.html">次へ</a>
+    </nav>
+  </div>
+</header>
+<main class="container">
+  <section>
+    <h2>FlatとSmoothの違い</h2>
+    <p>Flatは面ごとに法線を持つため境界が見えやすく、Smoothは頂点法線の補間で連続的に見えます。ここで重要なのは、Smoothがポリゴンを増やす機能ではないことです。</p>
+    <div class="theory"><strong>理論メモ:</strong> Smoothはシェーディング法線を変える処理です。シルエットはジオメトリ解像度に依存し続けます。</div>
+  </section>
+
+  <section>
+    <h2>3Dデモ</h2>
+    <p>Shadingの切替と分割数を変え、ハイライトのつながりと輪郭の違いを比較してください。</p>
+    <div class="playground" data-demo="smooth"></div>
+    <p class="demo-note">見るポイント: 面境界の出方 / シルエットの滑らかさ / ハイライトの連続性</p>
+  </section>
+
+  <section>
+    <h2>Blenderでの対応操作</h2>
+    <ul>
+      <li><code>Right Click > Shade Smooth / Shade Flat</code></li>
+      <li><code>Object Data Properties > Normals > Auto Smooth</code></li>
+      <li><code>Weighted Normal</code> で工業製品の陰影を安定化</li>
+    </ul>
+  </section>
+</main>
+<script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.161.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.161.0/examples/jsm/"}}</script>
+<script type="module" src="../book.js"></script>
+</body>
+</html>

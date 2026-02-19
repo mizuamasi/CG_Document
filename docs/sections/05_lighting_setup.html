@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>5. ライティング設計</title>
+  <link rel="stylesheet" href="../sections.css" />
+  <link rel="stylesheet" href="../book.css" />
+</head>
+<body>
+<header>
+  <div class="container">
+    <h1>5. ライティング設計</h1>
+    <p class="subtitle">ライト種類・3点照明・再現可能な数値プリセットをまとめる。</p>
+    <nav class="top-links">
+      <a href="../index.html">目次へ</a>
+      <a href="./04_pbr_material.html">前へ</a>
+      <a href="./06_references.html">次へ</a>
+    </nav>
+  </div>
+</header>
+<main class="container">
+  <section>
+    <h2>ライト種類と影の性質</h2>
+    <p>Pointは全方向、Sunは平行光、Areaは面光源です。影の硬さはライトサイズと距離で変わります。距離減衰（逆二乗則）により、位置差の影響は大きいです。</p>
+    <img class="figure" src="../assets/light-types.svg" alt="ライト種類" />
+    <div class="theory"><strong>理論メモ:</strong> Point/Areaは距離が2倍で照度は約1/4。配置微調整が見た目に直結します。</div>
+  </section>
+
+  <section>
+    <h2>3点照明の配置目安</h2>
+    <p>まずKeyだけで成立させ、次にFill、最後にRimを足します。被写体中心を <code>(0,0,0)</code> とした目安です。</p>
+    <img class="figure" src="../assets/diagrams/three-point-layout.svg" alt="3点照明配置" />
+    <ul>
+      <li>Key (Area): Location <code>(2.8, 2.2, 1.6)</code>, Rotation <code>(55, 0, 35)</code>, Size <code>1.2m</code>, Power <code>800W</code></li>
+      <li>Fill (Area): Location <code>(-2.0, 1.4, 1.0)</code>, Rotation <code>(60, 0, -30)</code>, Size <code>1.8m</code>, Power <code>220W</code></li>
+      <li>Rim (Area/Spot): Location <code>(-1.8, 2.4, -2.2)</code>, Rotation <code>(130, 0, -145)</code>, Size <code>0.8m</code>, Power <code>500W</code></li>
+      <li>Camera: Location <code>(0, 1.2, 6.0)</code>, Focal Length <code>50mm</code></li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>3Dデモ</h2>
+    <p>Point/Sun/Area/3-Pointを切り替え、影の境界と分離感の違いを確認してください。</p>
+    <div class="playground" data-demo="light"></div>
+    <p class="demo-note">Key: 主情報 / Fill: 暗部の可読化 / Rim: 背景分離</p>
+  </section>
+</main>
+<script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.161.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.161.0/examples/jsm/"}}</script>
+<script type="module" src="../book.js"></script>
+</body>
+</html>
