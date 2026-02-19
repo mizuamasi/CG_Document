@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="700" viewBox="0 0 1200 700">
+  <rect width="1200" height="700" fill="#f8fafc"/>
+  <text x="60" y="80" font-family="Helvetica, Arial, sans-serif" font-size="44" fill="#111827">PBR: Roughness と Metallic</text>
+
+  <rect x="70" y="130" width="500" height="500" rx="20" fill="#fff" stroke="#cbd5e1"/>
+  <text x="100" y="180" font-family="Helvetica, Arial, sans-serif" font-size="30" fill="#111827">Roughness（ざらざら度）</text>
+  <rect x="120" y="230" width="400" height="28" rx="14" fill="#e5e7eb"/>
+  <circle cx="170" cy="244" r="20" fill="#2563eb"/>
+  <text x="120" y="300" font-family="Helvetica, Arial, sans-serif" font-size="26" fill="#374151">0.0: つるつる（鏡面反射がシャープ）</text>
+  <text x="120" y="350" font-family="Helvetica, Arial, sans-serif" font-size="26" fill="#374151">1.0: ざらざら（反射が広がってぼける）</text>
+  <circle cx="200" cy="460" r="80" fill="#9ca3af"/>
+  <circle cx="200" cy="430" r="22" fill="#ffffff"/>
+  <circle cx="410" cy="460" r="80" fill="#9ca3af"/>
+  <ellipse cx="410" cy="430" rx="42" ry="24" fill="#ffffff" opacity="0.55"/>
+  <text x="145" y="575" font-family="Helvetica, Arial, sans-serif" font-size="22" fill="#1f2937">Low</text>
+  <text x="360" y="575" font-family="Helvetica, Arial, sans-serif" font-size="22" fill="#1f2937">High</text>
+
+  <rect x="630" y="130" width="500" height="500" rx="20" fill="#fff" stroke="#cbd5e1"/>
+  <text x="660" y="180" font-family="Helvetica, Arial, sans-serif" font-size="30" fill="#111827">Metallic（金属度）</text>
+  <text x="680" y="250" font-family="Helvetica, Arial, sans-serif" font-size="26" fill="#374151">0.0: 非金属（プラスチック、木、布）</text>
+  <text x="680" y="300" font-family="Helvetica, Arial, sans-serif" font-size="26" fill="#374151">1.0: 金属（銅、鉄、アルミ）</text>
+  <rect x="700" y="360" width="150" height="120" rx="14" fill="#b45309"/>
+  <rect x="910" y="360" width="150" height="120" rx="14" fill="#6b7280"/>
+  <rect x="725" y="385" width="95" height="30" rx="10" fill="#f8fafc" opacity="0.45"/>
+  <rect x="940" y="385" width="95" height="30" rx="10" fill="#f8fafc" opacity="0.85"/>
+  <text x="700" y="530" font-family="Helvetica, Arial, sans-serif" font-size="22" fill="#1f2937">非金属寄り</text>
+  <text x="920" y="530" font-family="Helvetica, Arial, sans-serif" font-size="22" fill="#1f2937">金属寄り</text>
+</svg>
