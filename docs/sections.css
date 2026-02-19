@@ -31,6 +31,8 @@ p { margin: 0; color: #d9e0ec; }
 p + p { margin-top: 8px; }
 ul { margin: 10px 0 0; padding-left: 20px; }
 img.figure { width: 100%; margin-top: 10px; border: 1px solid var(--line); border-radius: 10px; background: #fff; }
+.figure-inline { margin-top: 10px; border: 1px solid var(--line); border-radius: 10px; background: #fff; overflow: hidden; }
+.figure-inline svg { width: 100%; height: auto; display: block; }
 .theory {
   margin-top: 10px; padding: 10px; border: 1px solid #3f4c63; border-left: 4px solid #6aaeff;
   border-radius: 8px; background: #1d2430; color: #d6dfed; font-size: 0.92rem;
