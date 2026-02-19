@@ -42,6 +42,10 @@
 Blenderの編集モードで行う多くの操作は、この3要素の再配置です。  
 つまり「モデリング」は、粘土をこねるというより、**点と線と面の構造を設計する作業**です。
 
+ここから法線の話につながります。面には向きがあり、その向きを持ったベクトルが法線です。  
+三角形の面なら、2本の辺ベクトルの外積で法線方向が決まります。  
+つまり「面の向き」が、そのまま光の計算の入口になります。
+
 ### なぜ面の流れ（トポロジ）が大事か
 
 同じ見た目でも、面の流れが違うと次が変わります。
@@ -133,6 +137,8 @@ Smooth Shadeは、面の境目ごとに法線を補間して、連続的に見�
 - 強度：どれだけ明るいか
 - サイズ：影とハイライトがどれだけ硬い/柔らかいか
 
+加えて、Point/Areaでは距離減衰（逆二乗則）が効くため、ライト位置を少し動かすだけでも明るさが大きく変わります。
+
 ---
 
 ## 5. 有名なライト配置（基礎）
@@ -156,6 +162,15 @@ Smooth Shadeは、面の境目ごとに法線を補間して、連続的に見�
 - 初心者でも「意図ある明暗」を作りやすい
 
 最初は「ライトを増やす」より、**役割を分ける**のが上達の近道です。
+
+### Blenderで再現しやすい3点照明プリセット（目安）
+
+被写体中心を `0,0,0` に置く前提で、まずこの数値から始めると再現しやすいです。
+
+- Key (Area): Location `(2.8, 2.2, 1.6)` / Rotation `(55, 0, 35)` / Size `1.2m` / Power `800W`
+- Fill (Area): Location `(-2.0, 1.4, 1.0)` / Rotation `(60, 0, -30)` / Size `1.8m` / Power `220W`
+- Rim (Area/Spot): Location `(-1.8, 2.4, -2.2)` / Rotation `(130, 0, -145)` / Size `0.8m` / Power `500W`
+- Camera: Location `(0, 1.2, 6.0)` / Focal Length `50mm`
 
 ---
 
@@ -214,3 +229,15 @@ PBRは魔法ではありません。
 - PBRはRoughnessとMetallicの意味を押さえるだけでも効果が大きい
 
 この5点を軸にすると、Blender実習の「なぜ」が一気につながります。
+
+---
+
+## 9. 参考リンク（次の興味を埋める）
+
+- Blender Manual: https://docs.blender.org/manual/en/latest/
+- Mesh Structure: https://docs.blender.org/manual/en/latest/modeling/meshes/structure.html
+- Principled BSDF: https://docs.blender.org/manual/en/latest/render/shader_nodes/shader/principled.html
+- LearnOpenGL Basic Lighting: https://learnopengl.com/Lighting/Basic-Lighting
+- LearnOpenGL Normal Mapping: https://learnopengl.com/Advanced-Lighting/Normal-Mapping
+- Physically Based Rendering (PBRT): https://www.pbr-book.org/
+- The Book of Shaders: https://thebookofshaders.com/

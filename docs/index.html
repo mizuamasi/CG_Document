@@ -33,6 +33,10 @@
       <h2>1. 頂点・辺・面</h2>
       <p>モデリングは、頂点・辺・面の再配置です。押し出し（Extrude）やループカット（Loop Cut）も、見方を変えると「面を増やして流れを変える操作」です。操作名だけを追うと迷いやすいですが、いま何が増減したのかを追うと、意図を持って編集できるようになります。</p>
       <p>特に初心者段階では、細部よりもシルエットと面の流れを優先します。形の大枠が安定しているモデルは、後で質感やライトを足したときにも破綻しにくくなります。</p>
+      <p>ここから法線の話につながります。面（Face）には向きがあり、その向きを数値として持ったものが法線（Normal）です。三角形なら、2つの辺ベクトルの外積で法線方向が決まります。つまり「面の向き」が光の計算の入口です。</p>
+      <div class="theory">
+        <strong>理論メモ:</strong> 拡散反射の基本式は <code>I = max(0, N・L)</code> です。<code>N</code> は法線、<code>L</code> はライト方向。法線が変わると、同じライトでも明るさが変わります。
+      </div>
       <img class="figure" src="./assets/point-line-face.svg" alt="点 線 面の説明図" />
     </section>
 
@@ -40,6 +44,10 @@
       <h2>2. Smooth Shade と法線</h2>
       <p>Smooth Shadeは形状を増やす機能ではなく、法線を補間して陰影を滑らかに見せる機能です。つまり「見え方の計算」を変える処理で、メッシュの頂点数を直接増やしているわけではありません。</p>
       <p>このデモでは、Flat/Smoothを切り替えたときに、ハイライトのつながりと面の境界の見え方がどう変わるかを見てください。さらにメッシュ分割数を変えると、見た目の丸さとシルエットの関係も確認できます。</p>
+      <p>Flatは「面ごとに1本の法線」を使うので角が立って見えます。Smoothは「頂点単位で法線を平均化」するため、面の境界が見えにくくなります。どちらが正しいかではなく、対象物に応じて使い分けるのが実務的です。</p>
+      <div class="theory">
+        <strong>理論メモ:</strong> Auto Smoothは「法線を分ける角度しきい値」です。しきい値より急な角は法線を分離し、硬いエッジとして保持します。
+      </div>
       <div class="playground" data-demo="smooth"></div>
     </section>
 
@@ -47,6 +55,10 @@
       <h2>3. Normal Map</h2>
       <p>Normal Mapは、表面の細かな向き情報をテクスチャとして持たせる仕組みです。ポリゴンを増やさなくても、凹凸があるような陰影を作れます。ゲームやリアルタイム用途で特に重要な考え方です。</p>
       <p>このデモではON/OFFを切り替えて、輪郭は同じなのに表面の情報量だけ増えることを確認してください。強度を上げると効果が強くなりますが、やりすぎると不自然になる点も合わせて見ます。</p>
+      <p>Normal Mapは「法線をピクセル単位で上書きする」技術です。高密度モデルから低密度モデルへディテールを移すベイクとも相性がよく、負荷と見た目のバランスを取りやすくなります。</p>
+      <div class="theory">
+        <strong>理論メモ:</strong> タンジェント空間ノーマル（一般的な青紫のノーマルマップ）は、UVと接空間基底（TBN）を使ってローカル法線をワールド空間へ変換します。
+      </div>
       <div class="playground" data-demo="normal"></div>
     </section>
 
@@ -54,6 +66,10 @@
       <h2>4. PBR（Roughness / Metallic）</h2>
       <p>Roughnessは反射の「ぼけ具合」を決める値です。低いほど反射が鋭く、高いほど広がってやわらかく見えます。初心者が感じる「テカりすぎ」「安っぽさ」は、この値の調整で改善できることが多いです。</p>
       <p>Metallicは非金属と金属の反射モデル切り替えです。まずは0か1の二択で考えると理解しやすく、PBRの破綻も減らせます。このデモでは、同じ形・同じライトでも材質パラメータで印象が大きく変わることを体感してください。</p>
+      <p>PBRは「現実に近い光のルールで、材質差を表現する」ための枠組みです。Roughnessは表面の微細な凹凸の散らばりを近似し、Metallicは反射の振る舞い（誘電体か金属か）を切り替えます。</p>
+      <div class="theory">
+        <strong>理論メモ:</strong> マイクロファセット理論では、反射は微小面の向き分布で決まります。Roughnessが上がるほど分布が広がり、ハイライトが太く・弱く見えます。
+      </div>
       <div class="playground" data-demo="roughness"></div>
     </section>
 
@@ -61,11 +77,53 @@
       <h2>5. ライティングと有名な配置</h2>
       <p>ライティングは「明るくする」ためだけではなく、形を読みやすくするための設計です。Point / Sun / Areaはそれぞれ光の広がり方が違い、影の硬さや立体感の出方に差が出ます。</p>
       <p>3-Pointは、Key（主光）/ Fill（補助）/ Rim（縁取り）の役割分担で見せる定番構成です。ライトをただ増やすのではなく、何の役割で置くかを決めることが、見栄えを安定させる近道です。</p>
+      <p>さらに重要なのが「距離減衰」です。PointやAreaは距離が2倍になると照度はおおむね1/4に落ちます（逆二乗則）。つまり、少し位置を動かしただけで見え方が大きく変わります。</p>
+      <div class="theory">
+        <strong>理論メモ:</strong> まずKey単独で形を作り、その後Fillで暗部を調整し、最後にRimで輪郭分離を足す順に組むと迷いにくいです。
+      </div>
       <div class="playground" data-demo="light"></div>
+      <h3>Blenderで再現しやすい3点照明プリセット（目安）</h3>
+      <p>被写体の中心を原点 <code>(0, 0, 0)</code> に置いた前提です。最初はこの数値をそのまま入れて、そこから微調整してください。</p>
+      <ul>
+        <li><strong>Key (Area)</strong>: Location <code>(2.8, 2.2, 1.6)</code>, Rotation <code>(55, 0, 35)</code>, Size <code>1.2m</code>, Power <code>800W</code></li>
+        <li><strong>Fill (Area)</strong>: Location <code>(-2.0, 1.4, 1.0)</code>, Rotation <code>(60, 0, -30)</code>, Size <code>1.8m</code>, Power <code>220W</code></li>
+        <li><strong>Rim (Area/Spot)</strong>: Location <code>(-1.8, 2.4, -2.2)</code>, Rotation <code>(130, 0, -145)</code>, Size <code>0.8m</code>, Power <code>500W</code></li>
+        <li><strong>Camera</strong>: Location <code>(0, 1.2, 6.0)</code>, Focal Length <code>50mm</code></li>
+      </ul>
+      <h3>各ライトの役割（実務寄り）</h3>
+      <ul>
+        <li><strong>Key</strong>: 主情報を作る光。顔や物体の面の起伏を読ませる基準。最初にこれだけで成立させる。</li>
+        <li><strong>Fill</strong>: 影を消す光ではなく、暗部を「情報が読める暗さ」に戻す光。強すぎると平坦になる。</li>
+        <li><strong>Rim</strong>: 背景から分離するための縁光。強すぎると白縁だけが浮くので注意。</li>
+      </ul>
     </section>
 
     <section>
-      <h2>6. まとめ</h2>
+      <h2>6. さらに深掘りするなら</h2>
+      <p>次の論点を押さえると、現在の内容が一気につながります。</p>
+      <ul>
+        <li><strong>色管理</strong>: Base ColorはsRGB、Normal/Roughness/MetallicはNon-Colorを使う理由。</li>
+        <li><strong>UVとTBN</strong>: なぜUVの歪みがノーマルマップ品質に影響するか。</li>
+        <li><strong>エネルギー保存</strong>: 反射が増えるほど拡散成分が減る考え方。</li>
+        <li><strong>露出とトーンマッピング</strong>: 同じライト設定でも見え方が変わる理由。</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>7. 参考リンク（次の興味を埋める）</h2>
+      <ul>
+        <li><a href="https://docs.blender.org/manual/en/latest/" target="_blank" rel="noreferrer">Blender Manual</a>（公式マニュアル）</li>
+        <li><a href="https://docs.blender.org/manual/en/latest/modeling/meshes/structure.html" target="_blank" rel="noreferrer">Mesh Structure</a>（頂点・辺・面）</li>
+        <li><a href="https://docs.blender.org/manual/en/latest/render/shader_nodes/shader/principled.html" target="_blank" rel="noreferrer">Principled BSDF</a>（PBRノードの公式解説）</li>
+        <li><a href="https://learnopengl.com/Lighting/Basic-Lighting" target="_blank" rel="noreferrer">LearnOpenGL: Basic Lighting</a>（N・Lの基礎）</li>
+        <li><a href="https://learnopengl.com/Advanced-Lighting/Normal-Mapping" target="_blank" rel="noreferrer">LearnOpenGL: Normal Mapping</a>（ノーマルマップの基礎）</li>
+        <li><a href="https://www.pbr-book.org/" target="_blank" rel="noreferrer">Physically Based Rendering: From Theory to Implementation</a>（PBR理論の定番）</li>
+        <li><a href="https://thebookofshaders.com/" target="_blank" rel="noreferrer">The Book of Shaders</a>（体感しながら学ぶ）</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>8. まとめ</h2>
       <p>ここまでの内容は、Blender操作を覚えるための前提ではなく、操作結果を説明できるようにするための土台です。各デモで得た「見え方の変化」を、実際の実習で再現できるかを確認してください。</p>
       <ul>
         <li>形の土台は頂点・辺・面</li>
